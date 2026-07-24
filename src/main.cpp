@@ -53,5 +53,9 @@ city.bfs(1);
 std::cout << "\nRunning DFS from F-8\n";
 
 city.dfs(1);
+
+std::cout << "\nRunning Dijkstra from F-8\n";
+
+city.dijkstra(1);
     return 0;
 }

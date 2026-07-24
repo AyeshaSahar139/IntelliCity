@@ -1,6 +1,9 @@
 #include "Graph.h"
 
 #include <iostream>
+#include <queue>
+#include <limits>
+#include <unordered_map>
 #include <stdexcept>
 #include <queue>
 #include <unordered_set>
@@ -311,4 +314,77 @@ void Graph::dfs(int startId) const
     std::cout << "\n===== DFS Traversal =====\n";
 
     dfsHelper(startId, visited);
+}
+void Graph::dijkstra(int startId) const
+{
+    if (!hasVertex(startId))
+    {
+        std::cout << "Start vertex not found.\n";
+        return;
+    }
+
+    std::unordered_map<int, double> distance;
+
+    for (const auto& vertex : vertices)
+    {
+        distance[vertex.first] = std::numeric_limits<double>::infinity();
+    }
+
+    distance[startId] = 0.0;
+
+    using Node = std::pair<double, int>;
+
+    std::priority_queue<
+        Node,
+        std::vector<Node>,
+        std::greater<Node>
+    > pq;
+
+    pq.push({0.0, startId});
+
+    while (!pq.empty())
+    {
+        int current = pq.top().second;
+        double currentDistance = pq.top().first;
+        pq.pop();
+
+        if (currentDistance > distance[current])
+            continue;
+
+        for (const Edge& edge : adjacencyList.at(current))
+        {
+            int neighbor = edge.getDestinationId();
+
+            double newDistance =
+                distance[current] +
+                edge.getDistance() * edge.getTrafficFactor();
+
+            if (newDistance < distance[neighbor])
+            {
+                distance[neighbor] = newDistance;
+                pq.push({newDistance, neighbor});
+            }
+        }
+    }
+
+    std::cout << "\n===== Shortest Distance from "
+              << vertices.at(startId).getName()
+              << " =====\n";
+
+    for (const auto& vertex : vertices)
+    {
+        std::cout
+            << vertices.at(vertex.first).getName()
+            << " : ";
+
+        if (distance[vertex.first] ==
+            std::numeric_limits<double>::infinity())
+        {
+            std::cout << "Not Reachable\n";
+        }
+        else
+        {
+            std::cout << distance[vertex.first] << " km\n";
+        }
+    }
 }
