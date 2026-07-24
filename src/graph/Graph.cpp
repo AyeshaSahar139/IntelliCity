@@ -275,3 +275,40 @@ void Graph::bfs(int startId) const
         }
     }
 }
+void Graph::dfsHelper(int current,
+                      std::unordered_set<int>& visited) const
+{
+    visited.insert(current);
+
+    std::cout << vertices.at(current).getName() << "\n";
+
+    auto it = adjacencyList.find(current);
+
+    if (it == adjacencyList.end())
+        return;
+
+    for (const Edge& edge : it->second)
+    {
+        int neighbor = edge.getDestinationId();
+
+        if (visited.find(neighbor) == visited.end())
+        {
+            dfsHelper(neighbor, visited);
+        }
+    }
+}
+
+void Graph::dfs(int startId) const
+{
+    if (!hasVertex(startId))
+    {
+        std::cout << "Starting vertex does not exist.\n";
+        return;
+    }
+
+    std::unordered_set<int> visited;
+
+    std::cout << "\n===== DFS Traversal =====\n";
+
+    dfsHelper(startId, visited);
+}

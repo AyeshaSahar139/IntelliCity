@@ -50,5 +50,8 @@ for (const Edge& edge : neighbors)
 std::cout << "\nRunning BFS from F-8\n";
 
 city.bfs(1);
+std::cout << "\nRunning DFS from F-8\n";
+
+city.dfs(1);
     return 0;
 }

@@ -2,6 +2,7 @@
 #define GRAPH_H
 
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 #include "Vertex.h"
@@ -37,6 +38,11 @@ public:
 
     // BFS
     void bfs(int startId) const;
+
+    void dfs(int startId) const;
+
+void dfsHelper(int current,
+               std::unordered_set<int>& visited) const;
 
     Vertex getVertex(int id) const;
 
