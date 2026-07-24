@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <queue>
+#include <unordered_set>
 
 // Constructor
 Graph::Graph()
@@ -232,4 +234,44 @@ Vertex Graph::getVertex(int id) const
     }
 
     throw std::runtime_error("Vertex not found.");
+}
+void Graph::bfs(int startId) const
+{
+    if (!hasVertex(startId))
+    {
+        std::cout << "Starting vertex does not exist.\n";
+        return;
+    }
+
+    std::queue<int> q;
+    std::unordered_set<int> visited;
+
+    visited.insert(startId);
+    q.push(startId);
+
+    std::cout << "\n===== BFS Traversal =====\n";
+
+    while (!q.empty())
+    {
+        int current = q.front();
+        q.pop();
+
+        std::cout << vertices.at(current).getName() << "\n";
+
+        auto it = adjacencyList.find(current);
+
+        if (it != adjacencyList.end())
+        {
+            for (const Edge& edge : it->second)
+            {
+                int neighbor = edge.getDestinationId();
+
+                if (visited.find(neighbor) == visited.end())
+                {
+                    visited.insert(neighbor);
+                    q.push(neighbor);
+                }
+            }
+        }
+    }
 }

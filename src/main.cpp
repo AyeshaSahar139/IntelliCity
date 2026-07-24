@@ -47,6 +47,8 @@ for (const Edge& edge : neighbors)
         << edge.getTrafficFactor()
         << "\n";
 }
+std::cout << "\nRunning BFS from F-8\n";
 
+city.bfs(1);
     return 0;
 }
