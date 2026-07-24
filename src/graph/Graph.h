@@ -35,10 +35,12 @@ public:
     // Utility
     void displayGraph() const;
 
+    // BFS
+    void bfs(int startId) const;
+
     Vertex getVertex(int id) const;
 
     std::vector<Edge> getNeighbors(int id) const;
-
 };
 
 #endif
