@@ -40,6 +40,7 @@ public:
     void bfs(int startId) const;
 
     void dfs(int startId) const;
+    void dijkstra(int startId) const;
 
 void dfsHelper(int current,
                std::unordered_set<int>& visited) const;
