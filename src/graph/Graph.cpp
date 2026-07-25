@@ -4,6 +4,8 @@
 #include <queue>
 #include <limits>
 #include <unordered_map>
+#include <algorithm>
+
 #include <stdexcept>
 #include <queue>
 #include <unordered_set>
@@ -387,4 +389,88 @@ void Graph::dijkstra(int startId) const
             std::cout << distance[vertex.first] << " km\n";
         }
     }
+}
+void Graph::shortestPath(int startId, int destinationId) const
+{
+    if (!hasVertex(startId) || !hasVertex(destinationId))
+    {
+        std::cout << "Invalid vertex ID.\n";
+        return;
+    }
+
+    std::unordered_map<int, double> distance;
+    std::unordered_map<int, int> parent;
+
+    for (const auto& vertex : vertices)
+    {
+        distance[vertex.first] = std::numeric_limits<double>::infinity();
+        parent[vertex.first] = -1;
+    }
+
+    distance[startId] = 0.0;
+
+    using Node = std::pair<double, int>;
+
+    std::priority_queue<
+        Node,
+        std::vector<Node>,
+        std::greater<Node>
+    > pq;
+
+    pq.push({0.0, startId});
+
+    while (!pq.empty())
+    {
+        int current = pq.top().second;
+        double currentDistance = pq.top().first;
+        pq.pop();
+
+        if (currentDistance > distance[current])
+            continue;
+
+        for (const Edge& edge : adjacencyList.at(current))
+        {
+            int neighbor = edge.getDestinationId();
+
+            double newDistance =
+                distance[current] +
+                edge.getDistance() * edge.getTrafficFactor();
+
+            if (newDistance < distance[neighbor])
+            {
+                distance[neighbor] = newDistance;
+                parent[neighbor] = current;
+                pq.push({newDistance, neighbor});
+            }
+        }
+    }
+
+    if (distance[destinationId] == std::numeric_limits<double>::infinity())
+    {
+        std::cout << "\nNo path found.\n";
+        return;
+    }
+
+    std::vector<int> path;
+
+    for (int v = destinationId; v != -1; v = parent[v])
+    {
+        path.push_back(v);
+    }
+
+    std::reverse(path.begin(), path.end());
+
+    std::cout << "\n===== Shortest Path =====\n";
+
+    for (size_t i = 0; i < path.size(); i++)
+    {
+        std::cout << vertices.at(path[i]).getName();
+
+        if (i != path.size() - 1)
+            std::cout << " -> ";
+    }
+
+    std::cout << "\nTotal Cost : "
+              << distance[destinationId]
+              << " km\n";
 }

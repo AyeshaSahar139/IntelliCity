@@ -57,5 +57,7 @@ city.dfs(1);
 std::cout << "\nRunning Dijkstra from F-8\n";
 
 city.dijkstra(1);
+std::cout << "\nRunning Shortest Path from F-8 to I-8\n";
+city.shortestPath(1, 3);
     return 0;
 }

@@ -41,6 +41,7 @@ public:
 
     void dfs(int startId) const;
     void dijkstra(int startId) const;
+    void shortestPath(int startId, int destinationId) const;
 
 void dfsHelper(int current,
                std::unordered_set<int>& visited) const;
