@@ -8,6 +8,7 @@ private:
     int destinationId;
     double distance;
     double trafficFactor;
+    bool isOpen;
 
 public:
     // Constructors
@@ -19,12 +20,14 @@ public:
     int getDestinationId() const;
     double getDistance() const;
     double getTrafficFactor() const;
+    bool getStatus() const;
 
     // Setters
     void setSourceId(int sourceId);
     void setDestinationId(int destinationId);
     void setDistance(double distance);
     void setTrafficFactor(double trafficFactor);
+    void setStatus(bool status);
 };
 
 #endif

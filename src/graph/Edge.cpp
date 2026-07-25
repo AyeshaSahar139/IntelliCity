@@ -7,6 +7,7 @@ Edge::Edge()
     destinationId = 0;
     distance = 0.0;
     trafficFactor = 1.0;
+    isOpen = true;
 }
 
 // Parameterized Constructor
@@ -16,6 +17,7 @@ Edge::Edge(int sourceId, int destinationId, double distance, double trafficFacto
     this->destinationId = destinationId;
     this->distance = distance;
     this->trafficFactor = trafficFactor;
+    this->isOpen = true;
 }
 
 // Getters
@@ -39,6 +41,11 @@ double Edge::getTrafficFactor() const
     return trafficFactor;
 }
 
+bool Edge::getStatus() const
+{
+    return isOpen;
+}
+
 // Setters
 void Edge::setSourceId(int sourceId)
 {
@@ -58,4 +65,9 @@ void Edge::setDistance(double distance)
 void Edge::setTrafficFactor(double trafficFactor)
 {
     this->trafficFactor = trafficFactor;
+}
+
+void Edge::setStatus(bool status)
+{
+    isOpen = status;
 }
