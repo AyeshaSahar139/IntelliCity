@@ -26,8 +26,7 @@ city.addEdge(e3);
 
 
 
-std::cout << "\nRemoving vertex...\n\n";
-city.removeVertex(2);
+
 
 city.displayGraph();
 std::cout << "\n===== Neighbors of F-8 =====\n";
@@ -55,9 +54,17 @@ std::cout << "\nRunning DFS from F-8\n";
 city.dfs(1);
 
 std::cout << "\nRunning Dijkstra from F-8\n";
+std::cout << "\nClosing Road F-8 -> I-8\n";
+
+city.closeRoad(1, 3);
+city.dijkstra(1);
+std::cout << "\nRunning Dijkstra after road closure\n";
 
 city.dijkstra(1);
 std::cout << "\nRunning Shortest Path from F-8 to I-8\n";
-city.shortestPath(1, 3);
+std::cout << "\nRunning Shortest Path\n";
+
+city.shortestPath(1,3);
+
     return 0;
 }
