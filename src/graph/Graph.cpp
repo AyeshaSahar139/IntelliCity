@@ -403,6 +403,10 @@ void Graph::dijkstra(int startId) const
 
         for (const Edge& edge : adjacencyList.at(current))
         {
+            if (!edge.getStatus())
+{
+    continue;
+}
             int neighbor = edge.getDestinationId();
 
             double newDistance =
