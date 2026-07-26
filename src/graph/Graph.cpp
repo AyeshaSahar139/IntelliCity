@@ -68,14 +68,16 @@ void Graph::displayGraph() const
             for (const Edge& edge : it->second)
             {
                 std::cout
-                    << " -> "
-                    << edge.getDestinationId()
-                    << " | Distance: "
-                    << edge.getDistance()
-                    << " km"
-                    << " | Traffic: "
-                    << edge.getTrafficFactor()
-                    << "\n";
+    << " -> "
+    << edge.getDestinationId()
+    << " | Distance: "
+    << edge.getDistance()
+    << " km"
+    << " | Traffic: "
+    << edge.getTrafficFactor()
+    << " | Status: "
+    << (edge.getStatus() ? "OPEN" : "CLOSED")
+    << "\n";
             }
         }
         else
@@ -179,6 +181,52 @@ void Graph::removeEdge(int sourceId, int destinationId)
     }
 
     std::cout << "Road does not exist.\n";
+}
+void Graph::closeRoad(int sourceId, int destinationId)
+{
+    auto& roads = adjacencyList[sourceId];
+
+    for (Edge& edge : roads)
+    {
+        if (edge.getDestinationId() == destinationId)
+        {
+            edge.setStatus(false);
+
+            std::cout
+                << "Road closed between "
+                << vertices[sourceId].getName()
+                << " and "
+                << vertices[destinationId].getName()
+                << ".\n";
+
+            return;
+        }
+    }
+
+    std::cout << "Road not found.\n";
+}
+void Graph::openRoad(int sourceId, int destinationId)
+{
+    auto& roads = adjacencyList[sourceId];
+
+    for (Edge& edge : roads)
+    {
+        if (edge.getDestinationId() == destinationId)
+        {
+            edge.setStatus(true);
+
+            std::cout
+                << "Road reopened between "
+                << vertices[sourceId].getName()
+                << " and "
+                << vertices[destinationId].getName()
+                << ".\n";
+
+            return;
+        }
+    }
+
+    std::cout << "Road not found.\n";
 }
 void Graph::removeVertex(int id)
 {
@@ -430,6 +478,10 @@ void Graph::shortestPath(int startId, int destinationId) const
 
         for (const Edge& edge : adjacencyList.at(current))
         {
+            if (!edge.getStatus())
+{
+    continue;
+}
             int neighbor = edge.getDestinationId();
 
             double newDistance =

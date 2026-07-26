@@ -29,6 +29,8 @@ public:
 
     // Edge Operations
     void addEdge(const Edge& edge);
+    void closeRoad(int sourceId, int destinationId);
+void openRoad(int sourceId, int destinationId);
     void removeEdge(int sourceId, int destinationId);
 
     bool hasEdge(int sourceId, int destinationId) const;
