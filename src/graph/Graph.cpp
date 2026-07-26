@@ -530,3 +530,17 @@ void Graph::shortestPath(int startId, int destinationId) const
               << distance[destinationId]
               << " km\n";
 }
+double Graph::calculateTravelCost(const Edge& edge) const
+{
+    return edge.getDistance() * edge.getTrafficFactor();
+}
+
+double Graph::estimateTravelTime(const Edge& edge) const
+{
+    const double averageSpeed = 40.0;
+
+    double adjustedSpeed =
+        averageSpeed / edge.getTrafficFactor();
+
+    return edge.getDistance() / adjustedSpeed;
+}

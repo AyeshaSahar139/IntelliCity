@@ -29,8 +29,21 @@ city.addEdge(e3);
 
 
 city.displayGraph();
-std::cout << "\n===== Neighbors of F-8 =====\n";
 
+std::cout << "\nTravel Cost Example\n";
+
+Edge sampleRoad(1, 2, 5.0, 1.2);
+
+std::cout
+    << "Cost : "
+    << city.calculateTravelCost(sampleRoad)
+    << " km\n";
+
+std::cout
+    << "Estimated Time : "
+    << city.estimateTravelTime(sampleRoad)
+    << " hours\n";
+    std::cout << "\n===== Neighbors of F-8 =====\n";
 std::vector<Edge> neighbors = city.getNeighbors(1);
 
 for (const Edge& edge : neighbors)

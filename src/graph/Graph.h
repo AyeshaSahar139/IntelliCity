@@ -34,6 +34,8 @@ void openRoad(int sourceId, int destinationId);
     void removeEdge(int sourceId, int destinationId);
 
     bool hasEdge(int sourceId, int destinationId) const;
+    double calculateTravelCost(const Edge& edge) const;
+double estimateTravelTime(const Edge& edge) const;
 
     // Utility
     void displayGraph() const;
@@ -44,6 +46,7 @@ void openRoad(int sourceId, int destinationId);
     void dfs(int startId) const;
     void dijkstra(int startId) const;
     void shortestPath(int startId, int destinationId) const;
+    
 
 void dfsHelper(int current,
                std::unordered_set<int>& visited) const;
