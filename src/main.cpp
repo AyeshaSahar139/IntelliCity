@@ -78,6 +78,13 @@ std::cout << "\nRunning Shortest Path from F-8 to I-8\n";
 std::cout << "\nRunning Shortest Path\n";
 
 city.shortestPath(1,3);
+std::cout << "\nOpening Road F-8 -> I-8\n";
+city.openRoad(1, 3);
 
+std::cout << "\nRunning Dijkstra after reopening road\n";
+city.dijkstra(1);
+
+std::cout << "\nRunning Shortest Path Again\n";
+city.shortestPath(1, 3);
     return 0;
 }

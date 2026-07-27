@@ -28,13 +28,20 @@ public:
     bool hasVertex(int id) const;
 
     // Edge Operations
-    void addEdge(const Edge& edge);
-    void closeRoad(int sourceId, int destinationId);
-void openRoad(int sourceId, int destinationId);
-    void removeEdge(int sourceId, int destinationId);
+   // Edge Operations
+void addEdge(const Edge& edge);
+void removeEdge(int sourceId, int destinationId);
 
-    bool hasEdge(int sourceId, int destinationId) const;
-    double calculateTravelCost(const Edge& edge) const;
+bool hasEdge(int sourceId, int destinationId) const;
+
+void closeRoad(int sourceId, int destinationId);
+void openRoad(int sourceId, int destinationId);
+
+void updateTraffic(int sourceId,
+                   int destinationId,
+                   double newTrafficFactor);
+
+double calculateTravelCost(const Edge& edge) const;
 double estimateTravelTime(const Edge& edge) const;
 
     // Utility
