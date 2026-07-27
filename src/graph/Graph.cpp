@@ -544,3 +544,34 @@ double Graph::estimateTravelTime(const Edge& edge) const
 
     return edge.getDistance() / adjustedSpeed;
 }
+void Graph::updateTraffic(int sourceId,
+                          int destinationId,
+                          double newTrafficFactor)
+{
+    auto it = adjacencyList.find(sourceId);
+
+    if (it == adjacencyList.end())
+    {
+        std::cout << "Source vertex not found.\n";
+        return;
+    }
+
+    for (Edge &edge : it->second)
+    {
+        if (edge.getDestinationId() == destinationId)
+        {
+            edge.setTrafficFactor(newTrafficFactor);
+
+            std::cout
+                << "Traffic updated between "
+                << vertices[sourceId].getName()
+                << " and "
+                << vertices[destinationId].getName()
+                << ".\n";
+
+            return;
+        }
+    }
+
+    std::cout << "Road not found.\n";
+}

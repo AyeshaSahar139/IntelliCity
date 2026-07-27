@@ -80,7 +80,9 @@ std::cout << "\nRunning Shortest Path\n";
 city.shortestPath(1,3);
 std::cout << "\nOpening Road F-8 -> I-8\n";
 city.openRoad(1, 3);
-
+std::cout << "\nUpdating Traffic F-8 -> I-8\n";
+city.updateTraffic(1, 3, 2.8);
+city.displayGraph();
 std::cout << "\nRunning Dijkstra after reopening road\n";
 city.dijkstra(1);
 
