@@ -88,5 +88,7 @@ city.dijkstra(1);
 
 std::cout << "\nRunning Shortest Path Again\n";
 city.shortestPath(1, 3);
+std::cout << "\nRunning Emergency Route\n";
+city.emergencyRoute(1, 3);
     return 0;
 }
