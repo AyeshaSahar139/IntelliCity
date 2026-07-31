@@ -615,6 +615,24 @@ void Graph::emergencyRoute(int startId, int destinationId) const
               << distance[destinationId]
               << " km\n";
 }
+void Graph::recommendRoute(int startId, int destinationId) const
+{
+    if (!hasVertex(startId) || !hasVertex(destinationId))
+    {
+        std::cout << "Invalid vertex ID.\n";
+        return;
+    }
+
+    std::cout << "\n===== Route Recommendation =====\n";
+
+    std::cout << "\nRecommended Route (Traffic Aware)\n";
+    shortestPath(startId, destinationId);
+
+    std::cout << "\nEmergency Route (Ignores Traffic)\n";
+    emergencyRoute(startId, destinationId);
+
+    std::cout << "\nRecommendation Complete.\n";
+}
 double Graph::calculateTravelCost(const Edge& edge) const
 {
     return edge.getDistance() * edge.getTrafficFactor();

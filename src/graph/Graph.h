@@ -54,6 +54,7 @@ double estimateTravelTime(const Edge& edge) const;
     void dijkstra(int startId) const;
     void shortestPath(int startId, int destinationId) const;
     void emergencyRoute(int startId, int destinationId) const;
+    void recommendRoute(int startId, int destinationId) const;
 
 void dfsHelper(int current,
                std::unordered_set<int>& visited) const;
