@@ -3,6 +3,7 @@
 #include "graph/Graph.h"
 #include "graph/Vertex.h"
 #include "graph/Edge.h"
+#include "traffic/TrafficSignal.h"
 
 int main()
 {
@@ -92,5 +93,21 @@ std::cout << "\nRunning Emergency Route\n";
 city.emergencyRoute(1, 3);
 std::cout << "\nRunning Route Recommendation\n";
 city.recommendRoute(1,3);
+
+std::cout << "\nTraffic Signal Demo\n";
+
+TrafficSignal trafficSignal(1, "GREEN", 30);
+
+trafficSignal.display();
+
+trafficSignal.nextState();
+trafficSignal.display();
+
+trafficSignal.nextState();
+trafficSignal.display();
+
+trafficSignal.nextState();
+trafficSignal.display();
+
     return 0;
 }
