@@ -6,6 +6,7 @@
 #include "traffic/TrafficSignal.h"
 #include "incident/Incident.h"
 #include "vehicle/Vehicle.h"
+#include "simulation/Simulation.h"
 
 
 int main()
@@ -140,5 +141,24 @@ Vehicle vehicle1(
 );
 
 vehicle1.display();
+std::cout << "\nSimulation Demo\n";
+
+Simulation simulation(&city);
+
+// Add objects into simulation
+simulation.addVehicle(vehicle1);
+simulation.addIncident(incident1);
+simulation.addTrafficSignal(trafficSignal);
+
+// Initial Status
+simulation.displayStatus();
+
+// Step 1
+simulation.runStep();
+simulation.displayStatus();
+
+// Step 2
+simulation.runStep();
+simulation.displayStatus();
     return 0;
 }
