@@ -4,6 +4,8 @@
 #include "graph/Vertex.h"
 #include "graph/Edge.h"
 #include "traffic/TrafficSignal.h"
+#include "incident/Incident.h"
+
 
 int main()
 {
@@ -108,6 +110,22 @@ trafficSignal.display();
 
 trafficSignal.nextState();
 trafficSignal.display();
+std::cout << "\nIncident Demo\n";
 
+Incident incident1(
+    101,
+    1,
+    3,
+    "Accident",
+    "High"
+);
+
+incident1.display();
+
+std::cout << "\nResolving Incident...\n";
+
+incident1.resolve();
+
+incident1.display();
     return 0;
 }
