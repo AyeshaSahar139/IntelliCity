@@ -7,7 +7,7 @@
 #include "incident/Incident.h"
 #include "vehicle/Vehicle.h"
 #include "simulation/Simulation.h"
-
+#include "event/EventManager.h"
 
 int main()
 {
@@ -142,7 +142,13 @@ Vehicle vehicle1(
 
 vehicle1.display();
 std::cout << "\nSimulation Demo\n";
+std::cout << "\nEvent Manager Demo\n";
 
+EventManager manager;
+
+manager.addIncident(incident1);
+
+manager.displayAllIncidents();
 Simulation simulation(&city);
 
 // Add objects into simulation
