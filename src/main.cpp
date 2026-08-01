@@ -5,6 +5,7 @@
 #include "graph/Edge.h"
 #include "traffic/TrafficSignal.h"
 #include "incident/Incident.h"
+#include "vehicle/Vehicle.h"
 
 
 int main()
@@ -127,5 +128,17 @@ std::cout << "\nResolving Incident...\n";
 incident1.resolve();
 
 incident1.display();
+std::cout << "\nVehicle Demo\n";
+
+Vehicle vehicle1(
+    1,
+    "Car",
+    1,
+    3,
+    60,
+    false
+);
+
+vehicle1.display();
     return 0;
 }
