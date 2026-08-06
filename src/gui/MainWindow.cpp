@@ -14,6 +14,7 @@ MainWindow::MainWindow(Graph* graph)
     {
         std::cout << "Font failed to load\n";
     }
+    vehicle.setPosition(100,200);
 }
 
 void MainWindow::run()
@@ -31,7 +32,7 @@ void MainWindow::run()
         window.clear(sf::Color(30,30,30));
 
         cityMap.draw(window);
-
+vehicle.draw(window);
         window.display();
     }
 }

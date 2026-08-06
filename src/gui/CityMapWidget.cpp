@@ -54,8 +54,27 @@ void CityMapWidget::draw(sf::RenderWindow& window)
 line[0].position = sf::Vector2f(source.getX(), source.getY());
 line[1].position = sf::Vector2f(destination.getX(), destination.getY());
 
-line[0].color = edge.getStatus() ? sf::Color::White : sf::Color::Red;
-line[1].color = edge.getStatus() ? sf::Color::White : sf::Color::Red;
+sf::Color roadColor;
+
+if (!edge.getStatus())
+{
+    roadColor = sf::Color::Black;
+}
+else if (edge.getTrafficFactor() <= 1.1)
+{
+    roadColor = sf::Color::Green;
+}
+else if (edge.getTrafficFactor() <= 1.4)
+{
+    roadColor = sf::Color::Yellow;
+}
+else
+{
+    roadColor = sf::Color::Red;
+}
+
+line[0].color = roadColor;
+line[1].color = roadColor;
 
 window.draw(line, 2, sf::PrimitiveType::Lines);
         }

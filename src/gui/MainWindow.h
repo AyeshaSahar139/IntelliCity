@@ -5,11 +5,11 @@
 
 #include "../graph/Graph.h"
 #include "CityMapWidget.h"
-
+#include "VehicleRenderer.h"
 class MainWindow
 {
 private:
-
+VehicleRenderer vehicle;
     sf::RenderWindow window;
 sf::Font font;
     Graph* graph;
