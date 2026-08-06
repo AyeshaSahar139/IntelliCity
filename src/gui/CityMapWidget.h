@@ -8,7 +8,7 @@ class CityMapWidget
 {
 private:
     Graph* graph;
-
+sf::Font font;
 public:
     CityMapWidget(Graph* graph);
 

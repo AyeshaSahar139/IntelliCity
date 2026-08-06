@@ -1,12 +1,19 @@
 #include "MainWindow.h"
-
+#include <iostream>
 MainWindow::MainWindow(Graph* graph)
+
     : window(sf::VideoMode({1200,800}),
              "IntelliCity Smart Traffic Simulator"),
       graph(graph),
       cityMap(graph)
 {
+
+    
     window.setFramerateLimit(60);
+    if (!font.openFromFile("assets/Arial.ttf"))
+    {
+        std::cout << "Font failed to load\n";
+    }
 }
 
 void MainWindow::run()

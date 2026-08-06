@@ -1,10 +1,15 @@
 #include "CityMapWidget.h"
-
+#include <iostream>
 #include <SFML/Graphics.hpp>
 
 CityMapWidget::CityMapWidget(Graph* graph)
 {
     this->graph = graph;
+if(!font.openFromFile("assets/Arial.ttf"))
+    
+    {
+        std::cout << "CityMap font failed to load\n";
+    }
 }
 
 void CityMapWidget::draw(sf::RenderWindow& window)
@@ -71,5 +76,19 @@ window.draw(line, 2, sf::PrimitiveType::Lines);
             sf::Vector2f(v.getX(),v.getY()));
 
         window.draw(circle);
+        sf::Text text(font);
+
+text.setString(v.getName());
+
+text.setCharacterSize(16);
+
+text.setFillColor(sf::Color::White);
+
+text.setPosition(
+    sf::Vector2f(
+        v.getX() + 12,
+        v.getY() - 10));
+
+window.draw(text);
     }
 }

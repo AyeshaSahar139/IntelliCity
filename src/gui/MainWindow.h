@@ -11,7 +11,7 @@ class MainWindow
 private:
 
     sf::RenderWindow window;
-
+sf::Font font;
     Graph* graph;
 
     CityMapWidget cityMap;
