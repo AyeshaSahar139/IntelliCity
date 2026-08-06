@@ -679,3 +679,12 @@ void Graph::updateTraffic(int sourceId,
 
     std::cout << "Road not found.\n";
 }
+const std::unordered_map<int, Vertex>& Graph::getVertices() const
+{
+    return vertices;
+}
+
+const std::unordered_map<int, std::vector<Edge>>& Graph::getAdjacencyList() const
+{
+    return adjacencyList;
+}

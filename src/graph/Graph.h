@@ -62,6 +62,9 @@ void dfsHelper(int current,
     Vertex getVertex(int id) const;
 
     std::vector<Edge> getNeighbors(int id) const;
+    const std::unordered_map<int, Vertex>& getVertices() const;
+
+const std::unordered_map<int, std::vector<Edge>>& getAdjacencyList() const;
 };
 
 #endif
