@@ -16,7 +16,7 @@ int main()
 
     std::cout << "\nIntelliCity initialized successfully.\n";
     std::cout << "Launching GUI...\n";
-    MainWindow app;
+    MainWindow app(&city.getGraph());
 app.run();
 std::cout << "GUI Closed.\n";
     return 0;

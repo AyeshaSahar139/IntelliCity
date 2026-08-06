@@ -3,13 +3,22 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "../graph/Graph.h"
+#include "CityMapWidget.h"
+
 class MainWindow
 {
 private:
+
     sf::RenderWindow window;
 
+    Graph* graph;
+
+    CityMapWidget cityMap;
+
 public:
-    MainWindow();
+
+    MainWindow(Graph* graph);
 
     void run();
 };
