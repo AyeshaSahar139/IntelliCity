@@ -9,7 +9,7 @@
 class MainWindow
 {
 private:
-VehicleRenderer vehicle;
+VehicleRenderer vehicleRenderer;;
     sf::RenderWindow window;
 sf::Font font;
     Graph* graph;
